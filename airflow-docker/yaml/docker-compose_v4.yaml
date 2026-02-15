@@ -1,0 +1,25 @@
+services:
+  airflow:
+    image: apache/airflow:3.1.7-python3.10
+    container_name: airflow
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+
+      # Enable OpenLineage backend
+      AIRFLOW__LINEAGE__BACKEND: airflow.lineage.backend.openlineage.OpenLineageBackend
+
+      # 🔹 Console transport (prints events to logs)
+      AIRFLOW__OPENLINEAGE__TRANSPORT: '{"type":"console"}'
+      AIRFLOW__OPENLINEAGE__NAMESPACE: airflow
+
+      # Auto-install provider
+      _PIP_ADDITIONAL_REQUIREMENTS: apache-airflow-providers-openlineage
+
+    command: airflow standalone

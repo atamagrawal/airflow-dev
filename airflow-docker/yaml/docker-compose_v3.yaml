@@ -1,0 +1,17 @@
+services:
+  airflow:
+    image: apache/airflow:3.1.7-python3.10
+    container_name: airflow
+    environment:
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__LINEAGE__BACKEND: airflow.lineage.backend.openlineage.OpenLineageBackend
+      AIRFLOW__OPENLINEAGE__URL: http://marquez:9000/api/v1
+      _PIP_ADDITIONAL_REQUIREMENTS: apache-airflow-providers-openlineage
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+    ports:
+      - "8080:8080"
+    command: airflow standalone
