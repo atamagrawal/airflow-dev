@@ -34,3 +34,6 @@ airflow-docker/logs/dag_processor/2026-02-07/dags-folder/dag1.py.log
 airflow-docker/logs/dag_processor/2026-02-08/dags-folder/dag1.py.log
 airflow-docker/dags/.DS_Store
 airflow-docker/dags-backup/.DS_Store
+marquez-docker/.DS_Store
+marquez/.DS_Store
+marquez/.DS_Store
