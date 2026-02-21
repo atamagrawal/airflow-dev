@@ -37,3 +37,11 @@ airflow-docker/dags-backup/.DS_Store
 marquez-docker/.DS_Store
 marquez/.DS_Store
 marquez/.DS_Store
+/airflow-docker/logs
+/airflow-docker/dags/__pycache__
+/airflow-docker/logs
+/airflow-docker/logs/dag_processor
+airflow-docker/postgres/1
+/airflow-docker/logs
+airflow-docker/logs/dag_processor/latest
+/airflow-docker/dags/.idea
