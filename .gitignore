@@ -45,3 +45,4 @@ airflow-docker/postgres/1
 /airflow-docker/logs
 airflow-docker/logs/dag_processor/latest
 /airflow-docker/dags/.idea
+/airflow-docker/lineage

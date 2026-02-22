@@ -8,16 +8,16 @@ services:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
-      - ./lineage:/opt/airflow/lineage
     environment:
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
       AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
       AIRFLOW__CORE__TEST_CONNECTION: "Enabled"
 
       AIRFLOW__LINEAGE__BACKEND: airflow.lineage.backend.openlineage.OpenLineageBackend
-      AIRFLOW__OPENLINEAGE__TRANSPORT: '{"type": "file", "log_file_path": "/opt/airflow/lineage/lineage.json"}'
+      AIRFLOW__OPENLINEAGE__TRANSPORT: '{"type":"http","url":"http://host.docker.internal:9000"}'
+      AIRFLOW__OPENLINEAGE__URL: http://marquez:9000/api/v1
       AIRFLOW__OPENLINEAGE__NAMESPACE: airflow
-      AIRFLOW__OPENLINEAGE__DISABLED: "False"
+      AIRFLOW__OPENLINEAGE__DISABLED: "True"
 
       _PIP_ADDITIONAL_REQUIREMENTS: apache-airflow-providers-openlineage
 
